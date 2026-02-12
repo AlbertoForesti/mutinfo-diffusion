@@ -1,0 +1,22 @@
+
+_target_: mi_estimator.MIEstimator
+config:
+  estimator: minde
+  seq_length: ${data.config.seq_length}
+  sampling_eps: 0.001
+  beta_min: 0.1
+  beta_max: 20
+  importance_sampling: true
+  weight_s_functions: true
+  minde_type: c
+  dropout: 0.0
+  device: cuda # For the SDE
+  T: 1.0
+  resnet_block_groups: ${resnet_block_groups}
+  sigma_dim: ${sigma_dim}
+  init_dim: ${init_dim}
+  minde_use_embeddings: false
+  alphabet_size: ${data.config.alphabet_size}  # Same as dim
+  dim_mults:
+    - 1
+    - 1
