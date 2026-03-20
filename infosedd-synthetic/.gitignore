@@ -1,9 +1,0 @@
-*.cpython
-wandb/
-*.ckpt
-multirun/
-*.pyc
-mi_statistics/
-backup/
-*.txt
-!requirements.txt

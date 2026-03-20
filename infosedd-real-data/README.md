@@ -6,7 +6,7 @@ This repository contains the code for the anonymous submission **"Information Es
 
 ### Prerequisites
 - Python 3.10
-- NVIDIA GPU with Flash Attention support
+- NVIDIA GPU (recommended for training)
 - Conda or Miniconda
 
 ### Setup Environment
@@ -17,21 +17,12 @@ This repository contains the code for the anonymous submission **"Information Es
    conda activate infosedd
    ```
 
-2. **Install CUDA toolkit:**
-   ```bash
-   conda install cuda-toolkit=11.8 -c nvidia
-   ```
-
-3. **Install PyTorch with CUDA support:**
-   ```bash
-   pip install torch==2.1.1+cu118 torchvision==0.16.1+cu118 torchaudio==2.1.1+cu118 --index-url https://download.pytorch.org/whl/cu118
-   ```
-
-4. **Install project dependencies:**
+2. **Install project dependencies:**
    ```bash
    pip install -r requirements.txt
-   pip install git+https://github.com/VanessB/pytorch-kld
    ```
+
+The pinned `requirements.txt` already includes PyTorch and other training dependencies.
 
 ---
 
@@ -42,16 +33,24 @@ Follow the instructions from [SummEval](https://github.com/Yale-LILY/SummEval) t
 
 ### 2. Training Models
 
-**Train MINE-like estimator:**
+Run from the repository root unless noted otherwise.
+
+**Train discriminative baselines on SummEval:**
 ```bash
-bash train_mine_summeval.sh
+bash infosedd-real-data/scripts/summeval/train_fdimeMINEsummeval.sh
+bash infosedd-real-data/scripts/summeval/train_fdimeNWJsummeval.sh
+bash infosedd-real-data/scripts/summeval/train_fdimeSMILEsummeval.sh
+bash infosedd-real-data/scripts/summeval/train_fdimeHDsummeval.sh
+bash infosedd-real-data/scripts/summeval/train_fdimeGANsummeval.sh
 ```
-> 💡 Change the `loss` field to train different model variants.
 
 **Train INFO-SEDD:**
 ```bash
-bash train_infosedd_summeval.sh
+cd infosedd-real-data
+bash scripts/summeval/train_infosedd_summeval.sh
 ```
+
+> Note: several scripts use hardcoded paths (for example `data_path`) and GPU IDs. Update them before running.
 
 ### 3. Consistency Tests
 Run the training scripts with the following configuration:
@@ -68,15 +67,18 @@ To compute MI for each summarizer:
 
 ## 🧬 DNA Experiments
 
-**Train MINE-like estimator:**
+**Train discriminative baselines:**
 ```bash
-bash train_mine_dna.sh
+bash infosedd-real-data/scripts/dna/train_fdimeMINE.sh
+bash infosedd-real-data/scripts/dna/train_fdimeNWJ.sh
+bash infosedd-real-data/scripts/dna/train_fdimesmile.sh
+bash infosedd-real-data/scripts/dna/train_fdimeHD.sh
+bash infosedd-real-data/scripts/dna/train_fdimeGAN.sh
 ```
-> 💡 Change the `loss` field to train different model variants.
 
 **Train INFO-SEDD:**
 ```bash
-bash train_infosedd_dna.sh
+bash infosedd-real-data/scripts/dna/train_infosedd.sh
 ```
 
 ---
@@ -97,18 +99,27 @@ jupyter notebook create_promoter_dataset.ipynb
 ### 3. Model Training
 Train the INFO-SEDD model on the promoter dataset:
 ```bash
-bash train_infosedd_promoters.sh
+cd infosedd-real-data
+bash scripts/promoters/train_infosedd_promoters.sh
 ```
 
 ### 4. Motif Discovery
 Run motif selection analysis:
 ```bash
-bash motif_selection.sh
+cd infosedd-real-data
+bash scripts/promoters/motif_selection.sh
 ```
 
 **Required inputs:**
 - Path to the generated dataset
 - Path to the trained model checkpoint
+
+In `motif_selection.sh`, replace placeholder values:
+- `data_path=???`
+- `eval.checkpoint_path=???`
+
+Also note that motif selection writes output to a hardcoded path in `main.py`:
+- `/home/foresti/mdlm/motif_selection.txt`
 
 **Output:** A `.txt` file where each row contains:
 ```
@@ -126,4 +137,4 @@ start_of_mask mutual_information_mean mutual_information_std
 - **Mamba SSM**: State space models
 - **Causal Conv1D**: Convolution operations
 
-For the complete dependency list, see the requirements file
+For the complete dependency list, see `requirements.txt`.
