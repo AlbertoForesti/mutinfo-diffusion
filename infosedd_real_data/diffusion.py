@@ -510,7 +510,7 @@ class Diffusion(L.LightningModule):
     if self.T > 0:
       t = (t * self.T).to(torch.int)
       t = t / self.T
-      # t ∈ {1/T, 2/T, ..., 1}
+      # t \in {1/T, 2/T, ..., 1}
       t += (1 / self.T)
 
     if self.change_of_variables:
@@ -1180,7 +1180,7 @@ class Diffusion(L.LightningModule):
     if self.T > 0:
       t = (t * self.T).to(torch.int)
       t = t / self.T
-      # t ∈ {1/T, 2/T, ..., 1}
+      # t \in {1/T, 2/T, ..., 1}
       t += (1 / self.T)
 
     if self.change_of_variables:
