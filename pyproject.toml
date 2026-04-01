@@ -37,11 +37,8 @@ dependencies = [
     "flash-attn @ https://github.com/Dao-AILab/flash-attention/releases/download/v2.6.0.post1/flash_attn-2.6.0.post1+cu122torch2.2cxx11abiFALSE-cp312-cp312-linux_x86_64.whl",
 ]
 
-[tool.uv]
-package = false
-
 [tool.hatch.metadata]
 allow-direct-references = true
 
 [tool.hatch.build.targets.wheel]
-packages = ["infosedd-real-data", "infosedd-synthetic"]
+packages = ["infosedd_real_data", "infosedd_synthetic"]

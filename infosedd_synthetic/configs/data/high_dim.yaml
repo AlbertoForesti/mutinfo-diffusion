@@ -1,0 +1,13 @@
+_target_: datamodule.SyntheticDataModule
+config:
+  batch_size: 1024
+  alphabet_size: ${alphabet_size}
+  seq_length: ${seq_length}
+  mutual_information: ${mutual_information}
+  n_samples: 100_000
+  n_generations: 300
+  normalize: False
+  noise_rv: null
+  save_dataset: False # Allows to save the generated dataset for later reuse (e.g. for training on the same dataset with different seeds)
+  save_root: null # Root directory where to save datasets (if save_dataset is True)
+  load_path: null # Allows to load a cached dataset

@@ -1,0 +1,19 @@
+
+_target_: mi_estimator.MIEstimator
+config:
+  estimator: infosedd
+  seq_length: ${data.config.seq_length}  # This will need to be set based on your variable
+  alphabet_size: ${data.config.alphabet_size}  # Same as dim
+  sampling_eps: 0.001
+  graph: absorb
+  noise: loglinear
+  is_parametric_marginal: false
+  use_marginal_flag: false
+  variant: j
+  dropout: 0.0
+  resnet_block_groups: ${resnet_block_groups}
+  sigma_dim: ${sigma_dim}
+  init_dim: ${init_dim}
+  dim_mults:
+    - 1
+    - 1
