@@ -13,12 +13,6 @@ source .venv/bin/activate
 uv sync
 ```
 
-Optional Caduceus dependencies (motif workflows):
-
-```bash
-uv sync --extra caduceus
-```
-
 ## Paper
 
 - OpenReview (PDF): https://openreview.net/pdf?id=m18MXVdrV9
