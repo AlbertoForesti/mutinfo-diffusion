@@ -33,7 +33,7 @@ class Noise(abc.ABC, nn.Module):
     @abc.abstractmethod
     def total_noise(self, t):
         """
-        Total noise ie \int_0^t g(t) dt + g(0)
+        Total noise ie ∫_0^t g(t) dt + g(0)
         """
         pass
 
