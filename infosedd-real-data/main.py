@@ -157,7 +157,6 @@ def motif_selection(config, logger, tokenizer):
   end = max(min(252-config.box_length, upper_bound),start+1)
   mutinfos = []
   mutinfos_std = []
-  accs = []
   for i in tqdm(range(start,end), desc="Motif Selection"):
 
     model = _load_from_checkpoint(config=config,
@@ -223,9 +222,14 @@ def motif_selection(config, logger, tokenizer):
     import gc
     gc.collect()
     torch.cuda.empty_cache()
-  with open('/home/foresti/mdlm/motif_selection.txt', 'w') as f:
+  output_path = getattr(config, "motif_output_path", "/home/foresti/mdlm/motif_selection.txt")
+  output_dir = os.path.dirname(output_path)
+  if output_dir:
+    os.makedirs(output_dir, exist_ok=True)
+  with open(output_path, 'w') as f:
     for i in range(end-start):
-      f.write(f"{start+i} {mutinfos[i]}, std {mutinfos_std[i]}, acc {accs[i]}\n")
+      f.write(f"{start+i} {mutinfos[i]} {mutinfos_std[i]}\n")
+  logger.info(f"Motif selection results saved to {output_path}")
   
 
 def extract_model_id(path):

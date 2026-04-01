@@ -1,5 +1,18 @@
 from . import dit
 from . import ema
-from . import autoregressive
-from . import transformer
-from . import dimamba
+
+# Optional modules: some checkouts/environments may not include all backbones.
+try:
+  from . import autoregressive
+except ImportError:
+  autoregressive = None
+
+try:
+  from . import transformer
+except ImportError:
+  transformer = None
+
+try:
+  from . import dimamba
+except ImportError:
+  dimamba = None
