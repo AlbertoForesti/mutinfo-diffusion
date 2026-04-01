@@ -2,6 +2,23 @@
 
 This repository contains code and experiment assets for **Information Estimation with Discrete Diffusion**, split into synthetic and real-data settings.
 
+## Global environment setup (uv + pyproject.toml)
+
+This repository uses a **single global dependency setup** at the repository root via `pyproject.toml`.
+
+```bash
+# from repository root
+uv venv .venv
+source .venv/bin/activate
+uv sync
+```
+
+Optional Caduceus dependencies (motif workflows):
+
+```bash
+uv sync --extra caduceus
+```
+
 ## Paper
 
 - OpenReview (PDF): https://openreview.net/pdf?id=m18MXVdrV9
@@ -14,7 +31,7 @@ Synthetic-data experiments for mutual information estimation:
 - InfoSEDD and baseline estimators
 - Hydra configs and sweep scripts
 
-See `infosedd-synthetic/README.md` for setup and usage.
+See `infosedd-synthetic/README.md` for usage.
 
 ### `infosedd-real-data/`
 Real-data experiments:
@@ -22,7 +39,7 @@ Real-data experiments:
 - genomic/DNA experiments
 - promoter analysis workflows
 
-See `infosedd-real-data/README.md` for setup and usage.
+See `infosedd-real-data/README.md` for usage.
 
 ## Acknowledgements
 

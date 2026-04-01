@@ -8,14 +8,16 @@ InfoSEDD is a novel mutual information (MI) estimator for discrete random variab
 
 ## Installation
 
-```bash
-# Create conda environment
-conda create -n infosedd python=3.10
-conda activate infosedd
+Use the **global repository environment** from the root:
 
-# Install dependencies
-pip install -r requirements.txt
+```bash
+cd ..
+uv venv .venv
+source .venv/bin/activate
+uv sync
 ```
+
+This installs dependencies from the root `pyproject.toml` and works for both subprojects.
 
 ## Quick Start
 
@@ -90,5 +92,5 @@ python train.py --config-name=config alphabet_size=4 seq_length=20 mutual_inform
 ├── train.py              # Main training entrypoint
 ├── quickstart.ipynb      # Interactive tutorial
 ├── scripts/              # run_exp.sh / single_run.sh
-└── requirements.txt      # Dependencies
+└── ...                   # Dependencies managed at repository root
 ```

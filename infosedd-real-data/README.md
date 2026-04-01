@@ -5,24 +5,25 @@ This repository contains the code for the anonymous submission **"Information Es
 ## 🚀 Installation
 
 ### Prerequisites
-- Python 3.10
+- Python 3.10+
 - NVIDIA GPU (recommended for training)
-- Conda or Miniconda
+- `uv` (environment manager)
 
 ### Setup Environment
 
-1. **Create and activate conda environment:**
-   ```bash
-   conda create -n infosedd python=3.10
-   conda activate infosedd
-   ```
+From repository root:
 
-2. **Install project dependencies:**
-   ```bash
-   pip install -r requirements.txt
-   ```
+```bash
+uv venv .venv
+source .venv/bin/activate
+uv sync
+```
 
-The pinned `requirements.txt` already includes PyTorch and other training dependencies.
+Optional Caduceus stack for motif workflows:
+
+```bash
+uv sync --extra caduceus
+```
 
 ---
 
@@ -137,4 +138,5 @@ start_of_mask mutual_information_mean mutual_information_std
 - **Mamba SSM**: State space models
 - **Causal Conv1D**: Convolution operations
 
-For the complete dependency list, see `requirements.txt`.
+Core dependencies are managed in the repository root `pyproject.toml`.
+Use `uv sync` to install them, or `uv sync --extra caduceus` for motif-related extras.
