@@ -1,23 +1,10 @@
 # Information Estimation with Discrete Diffusion
 
-This repository contains the code and experiments for the anonymous submission "Information Estimation with Discrete Diffusion".
+This repository contains the code for "Information Estimation with Discrete Diffusion".
 
 ## Overview
 
 InfoSEDD is a novel mutual information (MI) estimator for discrete random variables using score-based diffusion models. It leverages the connection between mutual information and score functions for accurate high-dimensional discrete MI estimation.
-
-## Installation
-
-Use the **global repository environment** from the root:
-
-```bash
-cd ..
-uv venv .venv
-source .venv/bin/activate
-uv sync
-```
-
-This installs dependencies from the root `pyproject.toml` and works for both subprojects.
 
 ## Quick Start
 
@@ -81,16 +68,4 @@ cd infosedd-synthetic
 python train.py --config-name=config alphabet_size=4 seq_length=20 mutual_information=10
 
 # Or edit files under configs/ directly
-```
-
-## Repository Structure
-
-```
-├── configs/              # Hydra configuration tree
-├── mi_estimator.py       # Estimator implementation
-├── datamodule.py         # Synthetic data module
-├── train.py              # Main training entrypoint
-├── quickstart.ipynb      # Interactive tutorial
-├── scripts/              # run_exp.sh / single_run.sh
-└── ...                   # Dependencies managed at repository root
 ```
