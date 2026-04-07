@@ -1,31 +1,6 @@
 # Information Estimation with Discrete Diffusion
 
-This repository contains the code for the anonymous submission **"Information Estimation with Discrete Diffusion"**.
-
-## 🚀 Installation
-
-### Prerequisites
-- Python 3.10+
-- NVIDIA GPU (recommended for training)
-- `uv` (environment manager)
-
-### Setup Environment
-
-From repository root:
-
-```bash
-uv venv .venv
-source .venv/bin/activate
-uv sync
-```
-
-Optional Caduceus stack for motif workflows:
-
-```bash
-uv sync --extra caduceus
-```
-
----
+This repository contains the code for **"Information Estimation with Discrete Diffusion"**.
 
 ## 📝 Text Experiments
 
