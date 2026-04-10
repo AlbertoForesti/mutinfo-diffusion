@@ -1,2 +1,2 @@
 _target_: lightning.pytorch.strategies.SingleDeviceStrategy
-device: 1
+device: 0
