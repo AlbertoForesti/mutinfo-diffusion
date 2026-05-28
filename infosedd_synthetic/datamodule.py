@@ -81,7 +81,7 @@ class CSVDataModule(pl.LightningDataModule):
         super().__init__()
         self.batch_size = config.batch_size
         self.file_path = config.file_path
-        self.normalize = config.normalize
+        self.normalize = getattr(config, "normalize", False)
         self.x_col = config.x_col
         self.y_col = config.y_col
         self.csv_header = getattr(config, "csv_header", None)

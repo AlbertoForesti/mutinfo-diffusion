@@ -3,11 +3,9 @@ config:
   batch_size: 1024
   alphabet_size: 10
   file_path: /your/file/path/here.csv
-  normalize: False
   csv_header: 0
   float_handling: bin
   float_bins: 10
-  add_channel_dim: False
   x_col:
     - col1
     - col2
