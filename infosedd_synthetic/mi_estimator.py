@@ -7,7 +7,7 @@ except ImportError:
     import minde_utils
     import infosedd_utils
     import fdime_utils
-from .model import *
+from infosedd_synthetic.model import *
 try:
     from . import model_minde
     from . import graph_lib

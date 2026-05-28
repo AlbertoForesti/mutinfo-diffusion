@@ -186,6 +186,8 @@ class UnetMLP(LightningModule):
         self.dim_mults = config.dim_mults
 
         init_dim = config.init_dim
+        self.init_dim = init_dim
+        self.input_proj = nn.Linear(1, init_dim)
 
         dims = [init_dim, *map(lambda m: init_dim * m, self.dim_mults)]
         in_out = list(zip(dims[:-1], dims[1:]))
@@ -243,6 +245,15 @@ class UnetMLP(LightningModule):
 
     def forward(self, x, sigma, std=None):
         sigma = sigma.reshape(sigma.size(0), -1)
+
+        if x.dim() == 2:
+            x = x.unsqueeze(-1)
+        if x.shape[-1] != self.init_dim:
+            if x.shape[-1] != 1:
+                raise ValueError(
+                    f"Expected input last dimension to be 1 or {self.init_dim}, got {x.shape[-1]}."
+                )
+            x = self.input_proj(x)
 
         r = x.clone()
 
