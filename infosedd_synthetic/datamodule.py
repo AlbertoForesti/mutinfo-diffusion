@@ -87,7 +87,7 @@ class CSVDataModule(pl.LightningDataModule):
         self.csv_header = getattr(config, "csv_header", None)
         self.float_handling = getattr(config, "float_handling", "bin")
         self.float_bins = int(getattr(config, "float_bins", 10))
-        self.add_channel_dim = bool(getattr(config, "add_channel_dim", False))
+        self.add_channel_dim = bool(getattr(config, "add_channel_dim", True))
         self.config = config
 
     def _resolve_columns(self, df, col_spec, spec_name):
